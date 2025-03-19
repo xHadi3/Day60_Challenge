@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class UserService{
+    
+    static func fetchUsers() async throws -> [User]{
+        guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else{ return [] }
+        let (data,_) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode([User].self, from: data)
+    }
+    
+}

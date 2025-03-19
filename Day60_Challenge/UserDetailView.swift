@@ -8,11 +8,34 @@
 import SwiftUI
 
 struct UserDetailView: View {
+    var user: User
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView{
+            VStack(alignment: .leading, spacing: 20){
+                Text(user.name)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                Text("Age: \(user.age)")
+                    .font(.title2)
+                
+                Text("Friends:")
+                    .font(.headline)
+                
+                ForEach(user.friends){ friend in
+                    Text(friend.name)
+                        .font(.body)
+                }
+            }
+            
+            .padding()
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+            
+        }
+        .navigationTitle("Details")
+       
     }
 }
 
 #Preview {
-    UserDetailView()
+    UserDetailView(user: User(id: "", name: "", age: 1, company: "", friends: []))
 }

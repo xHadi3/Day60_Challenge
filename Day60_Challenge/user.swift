@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+struct User: Codable, Identifiable{
+    struct Friend: Codable, Identifiable{
+        let id:String
+        let name: String
+    }
+    let id:String
+    let name:String
+    let age:Int
+    let company:String
+    let friends:[Friend]
+   
+}
+
+

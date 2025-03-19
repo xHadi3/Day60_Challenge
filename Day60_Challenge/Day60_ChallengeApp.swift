@@ -12,6 +12,7 @@ struct Day60_ChallengeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
         }
     }
 }
