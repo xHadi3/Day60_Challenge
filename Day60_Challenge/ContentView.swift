@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.modelContext) private var context
     
     @Query private var users: [User]
+    
     var body: some View {
         NavigationStack{
             List(users){ user in
@@ -47,4 +48,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .modelContainer(for: [User.self, Friend.self])
 }
