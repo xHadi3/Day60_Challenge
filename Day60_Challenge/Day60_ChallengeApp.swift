@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Day60_ChallengeApp: App {
@@ -14,5 +15,8 @@ struct Day60_ChallengeApp: App {
             ContentView()
             
         }
+        .modelContainer(for: User.self)
+        
+        
     }
 }

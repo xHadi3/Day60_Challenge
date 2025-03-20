@@ -37,5 +37,5 @@ struct UserDetailView: View {
 }
 
 #Preview {
-    UserDetailView(user: User(id: "", name: "", age: 1, company: "", friends: []))
+    UserDetailView(user: User(id: "", name: "", age: 1, company: "", friends: []))  .modelContainer(for: User.self)
 }

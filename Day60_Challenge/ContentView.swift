@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @State private var users: [User] = []
+    @Environment(\.modelContext) private var context
+    
+    @Query private var users: [User]
     var body: some View {
         NavigationStack{
             List(users){ user in
@@ -24,8 +27,15 @@ struct ContentView: View {
             
                 .task{
                     do{
-                        users = try await UserService.fetchUsers()
-                        
+                        if(users.isEmpty){
+                            let users = try await UserService.fetchUsers()
+                            
+                            for user in users{
+                                context.insert(user)
+                            }
+                            print("loading data ....")
+                        }
+                       
                     }catch{
                         print("Failed to decode users: \(error)")
                     }
